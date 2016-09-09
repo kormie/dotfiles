@@ -1,5 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=.zsh-custom
+export ZSH_CUSTOM=$HOME/.zsh-custom
 EDITOR='vim'
 
 RBENV_ROOT=/usr/local/var/rbenv
