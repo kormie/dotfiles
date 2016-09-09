@@ -1,0 +1,15 @@
+*
+
+!.bashrc
+!.erlang
+!.erlang_settings/
+.erlang_settings/*
+!.erlang_settings/user_default.erl
+!.gemrc
+!.gitconfig
+!.gitignore_master
+!.gitignore
+!.zsh-custom
+!.irbrc
+!.vimrc
+!.zshrc

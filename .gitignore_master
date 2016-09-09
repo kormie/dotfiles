@@ -1,0 +1,6 @@
+**/.DS_Store
+tags/*
+tags/**
+tags/
+tags
+.byebug_history
