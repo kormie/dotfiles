@@ -6,13 +6,19 @@ batteryPack() {
 if [[ %? != 0 ]]; then
     codeface=`echo -n "\xF0\x9F\x96\x95"`
 fi
-isReduced () {
+isSmallerRPromptReduced () {
   right=$(pwd)
   right=${right#'/Users/Kormie/'}
   right=${right#'/Users/Kormie'}
   rightCount=${#right}
-  fraction=$(echo "scale=2 ; $rightCount/$COLUMNS" | bc)
-  if [[ "$fraction" -gt 0.4 ]]; then
+  fraction=$(echo "scale=3 ; $rightCount/$COLUMNS" | bc)
+  if [[ "$fraction" -gt .4 ]]; then
+    return 0
+  fi
+  return 1
+}
+isReduced () {
+  if [[ "$COLUMNS" -lt 54 ]]; then
     return 0
   fi
   return 1
@@ -25,16 +31,34 @@ leftSide() {
   fi
 }
 rightSide() {
-  if isReduced ; then
-    echo ''
+  if isSmallerRPromptReduced ; then
+    if isReduced ; then
+      echo "$(git_prompt_info)"
+    else
+      echo "$(batteryPack)"
+    fi
   else
     echo "%~ $(batteryPack)"
   fi
 }
+gitSection() {
+  if isReduced ; then
+    echo ''
+  else
+    echo " $(git_prompt_info)"
+  fi
+}
+cursor(){
+  if isReduced ; then
+    echo "%{${fg[cyan]}%}:%{$reset_color%}"
+  else
+    echo " %{$fg[red]%}⧴ %{$reset_color%}"
+  fi
+}
 
 
-PROMPT='$(leftSide)%{${fg[cyan]}%}%.%{$reset_color%} $(git_prompt_info)%(?,,%{$fg_bold[white]%}%{$fg[red]%}$codeface%{$reset_color%} )%{$fg[red]%}⧴ %{$reset_color%}'
-RPROMPT='%{$fg[green]%}$(rightSide)%{$reset_color%} %{$reset_color%}'
+PROMPT='$(leftSide)%{${fg[cyan]}%}%.%{$reset_color%}$(gitSection)%(?,,%{$fg_bold[white]%}%{$fg[red]%}$codeface%{$reset_color%})$(cursor)'
+RPROMPT='%{$fg[green]%}$(rightSide)%{$reset_color%}%{$reset_color%}'
 
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[yellow]%}["
