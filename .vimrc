@@ -25,6 +25,9 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'ervandew/supertab'
 Plugin 'rizzatti/dash.vim'
 
+Plugin 'tpope/vim-surround'
+Plugin 'jiangmiao/auto-pairs'
+
 Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
 
@@ -108,11 +111,6 @@ let g:CommandTWildIgnore=&wildignore . beamFileExtension
 let g:vim_markdown_folding_disabled=1
 
 " Bracket completion
-inoremap ( ()<Esc>:let leavechar=")"<CR>i
-inoremap { {}<Esc>:let leavechar="}"<CR>i
-inoremap [ []<Esc>:let leavechar="]"<CR>i
-inoremap " ""<Esc>:let leavechar="\""<CR>i
-inoremap <C-j> <Esc>:exec "normal f" . leavechar<CR>a
 noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
