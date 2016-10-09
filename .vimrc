@@ -46,6 +46,8 @@ Plugin 'elmcast/elm-vim'
 " ES6 Syntax
 Plugin 'othree/yajs.vim'
 
+Plugin 'mxw/vim-jsx'
+
 Plugin 'ctrlpvim/ctrlp.vim'
 
 Plugin 'fatih/vim-go'
@@ -59,6 +61,8 @@ filetype plugin indent on
 
 nnoremap <LEADER>s :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
 syntax on
+
+let g:jsx_ext_required = 0 "Allow JSX in normal JS files
 
 " Set swapfile location
 set directory=$HOME/.vim_swap_files
