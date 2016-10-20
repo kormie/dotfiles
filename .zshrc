@@ -36,6 +36,11 @@ alias psd="open -a /Applications/Adobe\ Photoshop\ CS6/Adobe\ Photoshop\ CS6.app
 alias adb="/Users/Kormie/Library/Android/sdk/platform-tools/adb"
 alias vi=vim
 
+# Amazon AWS Service CLI
+compdef aws_completer aws
+alias aws-profile="source aws-profile"
+alias aws="aws-wrapper"
+
 alias ll='ls -A1'
 
 export PATH=${PATH}:$HOME/gsutil:$HOME
