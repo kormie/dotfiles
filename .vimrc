@@ -31,6 +31,8 @@ Plugin 'jiangmiao/auto-pairs'
 Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
 
+Plugin 'udalov/kotlin-vim'
+
 " UltiSnips plugins
 Plugin 'SirVer/ultisnips'
 Plugin 'MarcWeber/vim-addon-mw-utils'
