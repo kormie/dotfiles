@@ -47,3 +47,5 @@ export PATH=${PATH}:$HOME/gsutil:$HOME
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
