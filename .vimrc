@@ -109,7 +109,7 @@ nnoremap <silent><C-n> :call NumberToggle()<CR>
 
 " Command-P customization
 nmap <silent> <Leader><SPACE> :CtrlP<CR>
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|elm-stuff'
+let g:ctrlp_custom_ignore = 'deps\|_build\|node_modules\|DS_Store\|git\|elm-stuff'
 " Ignore Beam Files
 let beamFileExtension = ",*.beam"
 let g:CommandTWildIgnore=&wildignore . beamFileExtension
