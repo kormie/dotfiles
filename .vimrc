@@ -14,7 +14,24 @@ command! -nargs=1 Silent
 
 "nnoremap <LEADER>l :Silent !elm-format % --yes<CR>:e!<CR>:w<CR>:echom expand("%:l") . " has been formatted 😘"<CR>
 
+" let tcommentreplacements_elm = {
+"                 \     '/*': '#<{(|',
+"                 \     '*/': '|)}>#',
+"                 \ }
+ let tcommentreplacements_elm = {
+       \ }
+let tcommentBlockElm = {
+                \ 'commentstring': '{--%s --}',
+                \ 'middle': '',
+                \ 'rxbeg': '',
+                \ 'rxend': '',
+                \ 'rxmid': '',
+                \ 'replacements': tcommentreplacements_elm
+                \ }
+
 let g:elm_format_autosave = 1
+let g:tcomment_types = {"elm_block": tcommentBlockElm}
+
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -26,6 +43,7 @@ Plugin 'ervandew/supertab'
 Plugin 'rizzatti/dash.vim'
 
 Plugin 'tpope/vim-surround'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'jiangmiao/auto-pairs'
 
 Bundle 'tpope/vim-fugitive'
@@ -64,6 +82,9 @@ filetype plugin indent on
 nnoremap <LEADER>s :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
 syntax on
 
+nmap <LEADER>/ gcc
+vmap <LEADER>/ <C-_>b
+
 let g:jsx_ext_required = 0 "Allow JSX in normal JS files
 
 " Set swapfile location
@@ -75,7 +96,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let mapleader=','
 map <LEADER>[ :tabprev<CR>
 map <LEADER>] :tabnext<CR>
-map <leader>/ <leader>ci
 
 nmap <D-[> gT
 
