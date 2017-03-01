@@ -45,6 +45,8 @@ alias ll='ls -A1'
 
 export PATH=${PATH}:$HOME/gsutil:$HOME
 
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 . $HOME/.asdf/asdf.sh
