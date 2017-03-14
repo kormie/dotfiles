@@ -34,6 +34,7 @@ asdf plugin-add node https://github.com/asdf-vm/asdf-nodejs.git
 asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
 asdf plugin-add go https://github.com/kennyp/asdf-golang.git
 asdf plugin-add haskell https://github.com/vic/asdf-haskell.git
+asdf plugin-add python https://github.com/tuvistavie/asdf-python.git
 
 asdf plugin-update --all
 
@@ -48,6 +49,7 @@ GLOBAL_GO=1.8
 GLOBAL_HASKELL=8.0.2
 GLOBAL_NODE=6.10.0
 GLOBAL_RUBY=2.4.0
+GLOBAL_PYTHON=2.7.4
 
 read -d '' GLOBALS <<EOF
 erlang $GLOBAL_ERLANG
@@ -57,6 +59,7 @@ go $GLOBAL_GO
 haskell $GLOBAL_HASKELL
 node $GLOBAL_NODE
 ruby $GLOBAL_RUBY
+python $GLOBAL_PYTHON
 EOF
 
 # Set Global Versions
