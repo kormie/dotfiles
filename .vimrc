@@ -99,6 +99,8 @@ map <LEADER>] :tabnext<CR>
 
 nmap <D-[> gT
 
+imap jk 
+
 nmap <LEADER>cc :call ToggleCrosshairs()<CR>
 function! ToggleCrosshairs()
   if(&cursorcolumn)
