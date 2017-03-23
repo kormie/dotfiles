@@ -35,7 +35,7 @@ asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
 asdf plugin-add go https://github.com/kennyp/asdf-golang.git
 asdf plugin-add haskell https://github.com/vic/asdf-haskell.git
 asdf plugin-add python https://github.com/tuvistavie/asdf-python.git
-
+asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
 asdf plugin-update --all
 
 # Do stupid PGP setup for node
@@ -50,6 +50,7 @@ GLOBAL_HASKELL=8.0.2
 GLOBAL_NODE=6.10.0
 GLOBAL_RUBY=2.4.0
 GLOBAL_PYTHON=2.7.4
+GLOBAL_RUST=1.16.0
 
 read -d '' GLOBALS <<EOF
 erlang $GLOBAL_ERLANG
@@ -60,6 +61,7 @@ haskell $GLOBAL_HASKELL
 node $GLOBAL_NODE
 ruby $GLOBAL_RUBY
 python $GLOBAL_PYTHON
+rust $GLOBAL_RUST
 EOF
 
 # Set Global Versions

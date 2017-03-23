@@ -70,6 +70,7 @@ Plugin 'mxw/vim-jsx'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 
+Plugin 'rust-lang/rust.vim'
 Plugin 'fatih/vim-go'
 Plugin 'dag/vim2hs'
 Plugin 'kchmck/vim-coffee-script'
