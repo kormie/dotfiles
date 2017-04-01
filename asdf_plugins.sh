@@ -36,6 +36,7 @@ asdf plugin-add go https://github.com/kennyp/asdf-golang.git
 asdf plugin-add haskell https://github.com/vic/asdf-haskell.git
 asdf plugin-add python https://github.com/tuvistavie/asdf-python.git
 asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
+asdf plugin-add postgres https://github.com/smashedtoatoms/asdf-postgres.git
 asdf plugin-update --all
 
 # Do stupid PGP setup for node
@@ -51,21 +52,28 @@ GLOBAL_NODE=6.10.0
 GLOBAL_RUBY=2.4.0
 GLOBAL_PYTHON=2.7.4
 GLOBAL_RUST=1.16.0
+GLOBAL_POSTGRES=9.4.7
 
-read -d '' GLOBALS <<EOF
-erlang $GLOBAL_ERLANG
-elixir $GLOBAL_ELIXIR
-elm $GLOBAL_ELM
-go $GLOBAL_GO
-haskell $GLOBAL_HASKELL
-node $GLOBAL_NODE
-ruby $GLOBAL_RUBY
-python $GLOBAL_PYTHON
-rust $GLOBAL_RUST
-EOF
+globals=(\
+  "erlang $GLOBAL_ERLANG" \
+  "elixir $GLOBAL_ELIXIR" \
+  "elm $GLOBAL_ELM" \
+  "go $GLOBAL_GO" \
+  "haskell $GLOBAL_HASKELL" \
+  "node $GLOBAL_NODE" \
+  "ruby $GLOBAL_RUBY" \
+  "python $GLOBAL_PYTHON" \
+  "rust $GLOBAL_RUST" \
+  "postgres $GLOBAL_POSTGRES" \
+)
 
 # Set Global Versions
-echo $GLOBALS > .tool-versions
+echo "" > .tool-versions
+for data in "${globals[@]}"
+do
+  echo $data >> .tool-versions
+done
+
 
 # Install global versions
 asdf install
