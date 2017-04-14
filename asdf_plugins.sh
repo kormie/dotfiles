@@ -1,11 +1,13 @@
-function handle_node_key_check() {
+#! /bin/bash
+
+handle_node_key_check() {
   echo "Checking PGP Keys for node..."
   alias check_rings=". ~/.asdf/plugins/node/bin/import-release-team-keyring"
   set +m
   check_rings > /dev/null 2>&1 &
   bg_pid=$!
 
-  while ps | grep -v grep | grep -q $bg_pid
+  while pgrep -q 'import-release-team-keyring'
   do
     echo Keys are still processing
     sleep 3
@@ -24,7 +26,7 @@ function handle_node_key_check() {
 }
 
 # Move to $HOME so globals go to the right place
-pushd $HOME > /dev/null 2>&1
+pushd "$HOME" > /dev/null 2>&1
 
 # Add all plugins and update them
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
@@ -71,7 +73,7 @@ globals=(\
 echo "" > .tool-versions
 for data in "${globals[@]}"
 do
-  echo $data >> .tool-versions
+  echo "$data" >> .tool-versions
 done
 
 
@@ -83,5 +85,3 @@ asdf install elm 0.17.0
 
 # Return the user to prior location
 popd > /dev/null 2>&1
-
-

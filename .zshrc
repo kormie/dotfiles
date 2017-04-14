@@ -11,6 +11,8 @@ plugins=(git zsh-syntax-highlighting bundler battery)
 COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
+alias connect_test="ssh -i \"~/.ssh/test_aws_server.pem\" ubuntu@ec2-52-207-172-228.compute-1.amazonaws.com"
+
 alias servedir='ruby -run -e httpd . -p 9091'
 alias jl='cd ~/Documents/projects/konrad'
 
