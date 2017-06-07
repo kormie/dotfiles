@@ -48,7 +48,7 @@ alias aws="aws-wrapper"
 
 alias ll='ls -A1'
 
-export PATH=${PATH}:$HOME/gsutil:$HOME
+export PATH=${PATH}:$HOME/gsutil:$HOME:`yarn global bin`
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)
