@@ -46,7 +46,7 @@ handle_node_key_check
 
 # Setup global versions
 GLOBAL_ERLANG=19.2
-GLOBAL_ELIXIR=1.4.0
+GLOBAL_ELIXIR=1.4.2
 GLOBAL_ELM=0.18.0
 GLOBAL_GO=1.8
 GLOBAL_HASKELL=8.0.2
