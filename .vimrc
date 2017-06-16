@@ -7,12 +7,14 @@ inoremap :w<CR> <ESC>:w<CR>
 " Fix screen disappearing
 set t_ti= t_te=
 
+" Make vim work with tmux
+set term=screen-256color
+
 
 command! -nargs=1 Silent
       \ | execute ':silent !'.<q-args>
       \ | execute ':redraw!'
 
-"nnoremap <LEADER>l :Silent !elm-format % --yes<CR>:e!<CR>:w<CR>:echom expand("%:l") . " has been formatted 😘"<CR>
 
 " let tcommentreplacements_elm = {
 "                 \     '/*': '#<{(|',
