@@ -18,6 +18,8 @@ export LS_COLORS="di=01;36:ln=04;31"
 export ZLS_COLORS=LS_COLORS
 
 alias tree="tree -alC"
+alias elint="fswatch -o ./lib | xargs -n1 -I{} ~/.credo_run.sh"
+alias etest="fswatch -o ./test ./lib | xargs -n1 -I{} ~/.etest.sh"
 
 alias connect_test="ssh -i \"~/.ssh/test_aws_server.pem\" ubuntu@ec2-52-207-172-228.compute-1.amazonaws.com"
 
