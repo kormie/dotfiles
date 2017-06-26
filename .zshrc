@@ -64,3 +64,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
