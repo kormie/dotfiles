@@ -50,8 +50,8 @@ alias vi=vim
 
 # Amazon AWS Service CLI
 compdef aws_completer aws
-alias aws-profile="source aws-profile"
-alias aws="aws-wrapper"
+#alias aws-profile="source aws-profile"
+#alias aws="aws-wrapper"
 
 alias ll='ls -A1'
 
