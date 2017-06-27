@@ -23,6 +23,8 @@ alias etest="fswatch -o ./test ./lib | xargs -n1 -I{} ~/.etest.sh"
 
 alias connect_test="ssh -i \"~/.ssh/test_aws_server.pem\" ubuntu@ec2-52-207-172-228.compute-1.amazonaws.com"
 
+alias lt='cd ~/Documents/letote/letote'
+
 alias servedir='ruby -run -e httpd . -p 9091'
 alias jl='cd ~/Documents/projects/konrad'
 
@@ -52,6 +54,8 @@ alias vi=vim
 compdef aws_completer aws
 #alias aws-profile="source aws-profile"
 #alias aws="aws-wrapper"
+
+source ~/.secrets
 
 alias ll='ls -A1'
 
