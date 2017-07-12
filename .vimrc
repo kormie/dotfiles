@@ -44,6 +44,8 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'ervandew/supertab'
 Plugin 'rizzatti/dash.vim'
 
+Plugin 'vim-syntastic/syntastic'
+
 Plugin 'tpope/vim-surround'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'jiangmiao/auto-pairs'
@@ -81,6 +83,17 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'mustache/vim-mustache-handlebars'
 call vundle#end()
 filetype plugin indent on
+
+" Syntastic Rules
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_ruby_checkers=['rubocop']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 nnoremap <LEADER>s :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
 syntax on
@@ -135,9 +148,16 @@ nnoremap <silent><C-n> :call NumberToggle()<CR>
 " Command-P customization
 nmap <silent> <Leader><SPACE> :CtrlP<CR>
 let g:ctrlp_custom_ignore = 'deps\|_build\|node_modules\|DS_Store\|git\|elm-stuff'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 " Ignore Beam Files
 let beamFileExtension = ",*.beam"
 let g:CommandTWildIgnore=&wildignore . beamFileExtension
+" Sane Ignore For ctrlp
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$',
+      \ 'file': '\.exe$\|\.so$\|\.dat$'
+      \ }
+let g:ctrlp_root_markers = ['package.json']
 
 let g:vim_markdown_folding_disabled=1
 
