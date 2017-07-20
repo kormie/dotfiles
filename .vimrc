@@ -54,6 +54,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
 
 Plugin 'udalov/kotlin-vim'
+Plugin 'ck3g/vim-change-hash-syntax'
 
 " UltiSnips plugins
 Plugin 'SirVer/ultisnips'
@@ -90,6 +91,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_ruby_checkers=['rubocop']
+let g:syntastic_ruby_rubocop_args='-c .ruby-style.yml'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1

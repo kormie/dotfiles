@@ -14,6 +14,9 @@ source $ZSH/oh-my-zsh.sh
 alias mkdir="mkdir -pv -m 2755"
 alias lspem="\ls -le"
 
+#make erlang have a memory
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 export LS_COLORS="di=01;36:ln=04;31"
 export ZLS_COLORS=LS_COLORS
 
