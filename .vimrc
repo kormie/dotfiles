@@ -41,8 +41,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 Bundle 'scrooloose/nerdtree'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'ervandew/supertab'
+Plugin 'slashmili/alchemist.vim'
 Plugin 'rizzatti/dash.vim'
+
+Plugin 'tpope/vim-fugitive'
 
 Plugin 'vim-syntastic/syntastic'
 
@@ -50,18 +52,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'jiangmiao/auto-pairs'
 
-Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
 
 Plugin 'udalov/kotlin-vim'
 Plugin 'ck3g/vim-change-hash-syntax'
-
-" UltiSnips plugins
-Plugin 'SirVer/ultisnips'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'honza/vim-snippets'
-" End Snipmate
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -107,7 +101,6 @@ let g:jsx_ext_required = 0 "Allow JSX in normal JS files
 
 " Set swapfile location
 set directory=$HOME/.vim_swap_files
-let g:UltiSnipsExpandTrigger="<tab>"
 
 "let g:SuperTabDefaultCompletionType = "context"
 
@@ -191,7 +184,7 @@ endfunc
 nmap <silent>  :nohlsearch<CR>
 autocmd BufReadPost quickfix nmap <buffer>  <CR>
 
-autocmd BufReadPost * :retab <CR> :w <CR>
+autocmd BufReadPost * :silent! retab <CR> :w <CR>
 
 map <LEADER><LEADER> :call MaximizeToggle()<CR>
 

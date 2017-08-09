@@ -11,14 +11,16 @@ plugins=(git zsh-syntax-highlighting bundler battery)
 COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
-alias mkdir="mkdir -pv -m 2755"
-alias lspem="\ls -le"
+source ~/.letote-aliases
 
 #make erlang have a memory
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 export LS_COLORS="di=01;36:ln=04;31"
 export ZLS_COLORS=LS_COLORS
+
+alias mkdir="mkdir -pv -m 2755"
+alias lspem="\ls -le"
 
 alias tree="tree -alC"
 alias elint="fswatch -o ./lib | xargs -n1 -I{} ~/.credo_run.sh"
@@ -51,7 +53,7 @@ alias zz='vi ~/.zshrc'
 alias vv='vi ~/.vimrc'
 alias psd="open -a /Applications/Adobe\ Photoshop\ CS6/Adobe\ Photoshop\ CS6.app"
 alias adb="/Users/Kormie/Library/Android/sdk/platform-tools/adb"
-alias vi=vim
+alias vi=nvim
 
 # Amazon AWS Service CLI
 compdef aws_completer aws
