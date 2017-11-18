@@ -1,7 +1,7 @@
 [user]
   name  = David Kormushoff
   email = kormie@gmail.com
-	signingkey = 4351FC9621EFC9E5
+  signingkey = 7E3C1DAD01AC80EF
 [core]
   editor       = vim
   excludesfile = ~/.gitignore_master
@@ -13,3 +13,5 @@
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
+[commit]
+  gpgsign = true

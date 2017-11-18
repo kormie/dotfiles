@@ -86,3 +86,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # OPAM configuration
 . /Users/kormie/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+export GPG_TTY=$(tty)
