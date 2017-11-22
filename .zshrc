@@ -7,7 +7,7 @@ RBENV_ROOT=/usr/local/var/rbenv
 GOPATH=/Users/Kormie/Documents/Bearch/go_code
 
 ZSH_THEME="kormie"
-plugins=(git zsh-syntax-highlighting bundler battery)
+plugins=(git zsh-syntax-highlighting bundler battery zsh-autosuggestions)
 COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
@@ -66,6 +66,8 @@ compdef aws_completer aws
 source ~/.letote-secrets
 
 alias ll='ls -A1'
+
+fpath+=~/.zfunc
 
 export PATH=${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/.cargo/bin
 
