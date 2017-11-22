@@ -67,7 +67,7 @@ source ~/.letote-secrets
 
 alias ll='ls -A1'
 
-export PATH=${PATH}:$HOME/gsutil:$HOME:`yarn global bin`
+export PATH=${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/.cargo/bin
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)
@@ -87,3 +87,5 @@ export NVM_DIR="$HOME/.nvm"
 # OPAM configuration
 . /Users/kormie/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 export GPG_TTY=$(tty)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

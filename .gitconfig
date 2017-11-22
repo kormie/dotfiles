@@ -15,3 +15,5 @@
   required = true
 [commit]
   gpgsign = true
+[github]
+	user = Kormie
