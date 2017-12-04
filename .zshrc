@@ -69,7 +69,7 @@ alias ll='ls -A1'
 
 fpath+=~/.zfunc
 
-export PATH=${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/.cargo/bin
+export PATH=${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/.cargo/bin:$HOME/miniconda3/bin
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)
@@ -80,7 +80,6 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 . $HOME/.asdf/completions/asdf.bash
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -91,3 +90,4 @@ export NVM_DIR="$HOME/.nvm"
 export GPG_TTY=$(tty)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$HOME/.rvm/bin:$PATH"

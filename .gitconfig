@@ -1,6 +1,6 @@
 [user]
-  name  = David Kormushoff
-  email = kormie@gmail.com
+	name = David Kormushoff
+	email = kormie@gmail.com
   signingkey = 7E3C1DAD01AC80EF
 [core]
   editor       = vim
@@ -10,10 +10,13 @@
 [push]
   default = matching
 [filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
   required = true
+	process = git-lfs filter-process
 [commit]
   gpgsign = true
 [github]
 	user = Kormie
+[gpg]
+	program = /usr/local/bin/gpg
