@@ -69,7 +69,9 @@ alias ll='ls -A1'
 
 fpath+=~/.zfunc
 
-export PATH=${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/.cargo/bin:$HOME/miniconda3/bin
+export PATH=${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/.cargo/bin:$HOME/miniconda3/bin:$HOME/Library/Haskell/bin
+
+alias hdocs='open /Users/kormie/Library/Haskell/doc/index.html'
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)
