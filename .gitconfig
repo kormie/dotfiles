@@ -15,7 +15,7 @@
   required = true
 	process = git-lfs filter-process
 [commit]
-  gpgsign = true
+  gpgsign = false
 [github]
 	user = Kormie
 [gpg]

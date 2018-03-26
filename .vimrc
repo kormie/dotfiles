@@ -185,8 +185,7 @@ nmap <silent>  :nohlsearch<CR>
 autocmd BufReadPost quickfix nmap <buffer>  <CR>
 
 autocmd BufReadPost * :silent! retab <CR> :w <CR>
-
-map <LEADER><LEADER> :call MaximizeToggle()<CR>
+" map <LEADER><LEADER> :call MaximizeToggle()<CR>
 
 function! MaximizeToggle()
   if exists("s:maximize_session")
@@ -270,3 +269,8 @@ for tool in s:opam_packages
   endif
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
+" ## added by OPAM user-setup for vim / ocp-indent ## 52103075f253c6b924cace2f07802a10 ## you can edit, but keep this line
+if count(s:opam_available_tools,"ocp-indent") == 0
+  source "/Users/kormie/.opam/4.02.3/share/vim/syntax/ocp-indent.vim"
+endif
+" ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
