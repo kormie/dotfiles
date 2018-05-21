@@ -5,3 +5,5 @@ tags/
 tags
 .byebug_history
 jsconfig.json
+*.code-workspace
+settings.json
