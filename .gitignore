@@ -2,22 +2,16 @@
 
 !.bashrc
 !.erlang
-!.erlang_settings/
-.erlang_settings/*
-!.erlang_settings/user_default.erl
+!.erlang_settings
 !.gemrc
 !.gitconfig
 !.gitignore_master
 !.gitignore
-!.zsh-custom
-!.zsh-custom/*
-!.zsh-custom/themes/*
+!.zsh-custom/themes/
 !.irbrc
 !.vimrc
 !.zshrc
 !.asdf
 !.tmux.conf
 !asdf_plugins.sh
-!.config
-!.config/nvim/*
-!.config/nvim/init.vim
+!.config/

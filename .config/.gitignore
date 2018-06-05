@@ -1,0 +1,5 @@
+*
+!.gitignore
+!/nvim/
+/nvim/*
+!/nvim/init.vim
