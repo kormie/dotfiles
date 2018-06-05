@@ -19,7 +19,7 @@ tmux send-keys -t "Le Tote Mobile":4 "xc" Enter
 
 tmux select-window -t "Le Tote Mobile":3
 tmux select-window -t "Le Tote Mobile":4
-tmux attach-session -d -t "Le Tote Mobile"
+tmux attach-session -d -t "Le Tote Mobile" -c ~/letote/letote_mobile_ios/
 
 
 
