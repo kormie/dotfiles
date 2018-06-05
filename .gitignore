@@ -13,5 +13,7 @@
 !.zshrc
 !.asdf
 !.tmux.conf
+!ltmux.sh
+!ltmobile.sh
 !asdf_plugins.sh
 !.config/
