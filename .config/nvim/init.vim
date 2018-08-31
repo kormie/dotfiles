@@ -362,7 +362,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   let g:fzf_layout = { 'window': 'enew' }
-  nnoremap <silent> <C-P> :call fzf#run(fzf#vim#wrap({'source': "find . -type d
+  nnoremap <silent> <C-P> :call fzf#run(fzf#wrap({'source': "find . -type d
         \ \\( -path ./**/*node_modules -o -path ./.git -o -path ./webpack/*.tmp \\) -prune
         \ -o -type f -iname '*' -print"}))<cr>
   nnoremap <silent> <leader>a :Ag<cr>
