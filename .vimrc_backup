@@ -1,0 +1,276 @@
+set nocompatible              " be iMproved, required
+set nowrap
+filetype off
+
+set laststatus=2
+inoremap :w<CR> <ESC>:w<CR>
+" Fix screen disappearing
+set t_ti= t_te=
+
+" Make vim work with tmux
+set term=screen-256color
+
+
+command! -nargs=1 Silent
+      \ | execute ':silent !'.<q-args>
+      \ | execute ':redraw!'
+
+
+" let tcommentreplacements_elm = {
+"                 \     '/*': '#<{(|',
+"                 \     '*/': '|)}>#',
+"                 \ }
+ let tcommentreplacements_elm = {
+       \ }
+let tcommentBlockElm = {
+                \ 'commentstring': '{--%s --}',
+                \ 'middle': '',
+                \ 'rxbeg': '',
+                \ 'rxend': '',
+                \ 'rxmid': '',
+                \ 'replacements': tcommentreplacements_elm
+                \ }
+
+let g:elm_format_autosave = 1
+let g:tcomment_types = {"elm_block": tcommentBlockElm}
+
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'flazz/vim-colorschemes'
+Bundle 'scrooloose/nerdtree'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'rizzatti/dash.vim'
+
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'vim-syntastic/syntastic'
+
+Plugin 'tpope/vim-surround'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'jiangmiao/auto-pairs'
+
+Bundle 'majutsushi/tagbar'
+
+Plugin 'udalov/kotlin-vim'
+Plugin 'ck3g/vim-change-hash-syntax'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'elmcast/elm-vim'
+
+" ES6 Syntax
+Plugin 'othree/yajs.vim'
+
+Plugin 'mxw/vim-jsx'
+
+Plugin 'ctrlpvim/ctrlp.vim'
+
+Plugin 'rust-lang/rust.vim'
+Plugin 'fatih/vim-go'
+Plugin 'dag/vim2hs'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'mustache/vim-mustache-handlebars'
+call vundle#end()
+filetype plugin indent on
+
+" Syntastic Rules
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_ruby_checkers=['rubocop']
+let g:syntastic_ruby_rubocop_args='-c .ruby-style.yml'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+nnoremap <LEADER>s :%s/\<<C-r><C-w>\>//g<LEFT><LEFT>
+syntax on
+
+nmap <LEADER>/ gcc
+vmap <LEADER>/ <C-_>b
+
+let g:jsx_ext_required = 0 "Allow JSX in normal JS files
+
+" Set swapfile location
+set directory=$HOME/.vim_swap_files
+
+"let g:SuperTabDefaultCompletionType = "context"
+
+let mapleader=','
+map <LEADER>[ :tabprev<CR>
+map <LEADER>] :tabnext<CR>
+
+nmap <D-[> gT
+
+imap jk 
+
+nmap <LEADER>cc :call ToggleCrosshairs()<CR>
+function! ToggleCrosshairs()
+  if(&cursorcolumn)
+    let newColumn = "nocursorcolumn"
+  else
+    let newColumn = "cursorcolumn"
+  endif
+  if(&cursorline)
+    let newLine = "nocursorline"
+  else
+    let newLine = "cursorline"
+  endif
+  setl cursorline!
+  setl cursorcolumn!
+  echom newLine . " && " . newColumn
+endfunc
+
+function! NumberToggle()
+  if(&relativenumber ==1)
+    set norelativenumber
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <silent><C-n> :call NumberToggle()<CR>
+
+" Command-P customization
+nmap <silent> <Leader><SPACE> :CtrlP<CR>
+let g:ctrlp_custom_ignore = 'deps\|_build\|node_modules\|DS_Store\|git\|elm-stuff'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" Ignore Beam Files
+let beamFileExtension = ",*.beam"
+let g:CommandTWildIgnore=&wildignore . beamFileExtension
+" Sane Ignore For ctrlp
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.yardoc\|public\/images\|public\/system\|data\|log\|tmp$',
+      \ 'file': '\.exe$\|\.so$\|\.dat$'
+      \ }
+let g:ctrlp_root_markers = ['package.json']
+
+let g:vim_markdown_folding_disabled=1
+
+" Bracket completion
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+
+"NerdTree
+nmap <silent><Leader>n :NERDTreeToggle<CR>
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore = ['tmp', '.yardoc', 'pkg']
+
+set ignorecase smartcase
+set hlsearch
+set incsearch
+
+set list
+set listchars=trail:●
+nmap <silent><LEADER>d :call CleanupExtraSpace()<CR>
+
+function! CleanupExtraSpace()
+  let position = getpos(".")
+  %s/\s\+$//e
+  call setpos(".", position)
+endfunc
+"Remove highlighting with return, but not in quickfix buffers (For ack)
+nmap <silent>  :nohlsearch<CR>
+autocmd BufReadPost quickfix nmap <buffer>  <CR>
+
+autocmd BufReadPost * :silent! retab <CR> :w <CR>
+" map <LEADER><LEADER> :call MaximizeToggle()<CR>
+
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+
+set backspace=indent,eol,start
+
+set background=dark
+colors hybrid
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+set backupdir=~/.vim/backups
+
+set relativenumber
+set nu
+
+" Filetypes
+autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+autocmd BufNewFile,BufRead *.ru set filetype=ruby
+autocmd BufNewFile,BufRead .babelrc set filetype=javascript
+au BufNewFile,BufRead Podfile set filetype=ruby
+
+let g:airline_powerline_fonts = 1
+
+let g:airline_theme = 'hybrid'
+
+" xmpfilter
+" nmap <buffer> <F5> <Plug>(xmpfilter-run)
+" xmap <buffer> <F5> <Plug>(xmpfilter-run)
+" imap <buffer> <F5> <Plug>(xmpfilter-run)
+
+" nmap <buffer> <F4> <Plug>(xmpfilter-mark)
+" xmap <buffer> <F4> <Plug>(xmpfilter-mark)
+" imap <buffer> <F4> <Plug>(xmpfilter-mark)
+
+
+" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+let s:opam_share_dir = system("opam config var share")
+let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+
+let s:opam_configuration = {}
+
+function! OpamConfOcpIndent()
+  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+endfunction
+let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+
+function! OpamConfOcpIndex()
+  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+endfunction
+let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+
+function! OpamConfMerlin()
+  let l:dir = s:opam_share_dir . "/merlin/vim"
+  execute "set rtp+=" . l:dir
+endfunction
+let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+for tool in s:opam_packages
+  " Respect package order (merlin should be after ocp-index)
+  if count(s:opam_available_tools, tool) > 0
+    call s:opam_configuration[tool]()
+  endif
+endfor
+" ## end of OPAM user-setup addition for vim / base ## keep this line
+" ## added by OPAM user-setup for vim / ocp-indent ## 52103075f253c6b924cace2f07802a10 ## you can edit, but keep this line
+if count(s:opam_available_tools,"ocp-indent") == 0
+  source "/Users/kormie/.opam/4.02.3/share/vim/syntax/ocp-indent.vim"
+endif
+" ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line

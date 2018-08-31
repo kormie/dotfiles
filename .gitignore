@@ -10,6 +10,7 @@
 !.zsh-custom/themes/
 !.irbrc
 !.vimrc
+!.vimrc_backup
 !.zshrc
 !.asdf
 !.tmux.conf
