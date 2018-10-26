@@ -17,7 +17,15 @@ export CLASSPATH=".:/usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar:$CLAS
 alias antlr='java -jar /usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar'
 
 ZSH_THEME="kormie"
-plugins=(git zsh-syntax-highlighting bundler battery)
+plugins=(
+  battery
+  bundler
+  git
+  wd
+  z
+  zeus
+  zsh-syntax-highlighting
+)
 COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
@@ -134,7 +142,7 @@ zplugin ice wait"2" pick'$ZPFX/bin/git-now' as"program" lucid make'prefix=$ZPFX 
 zplugin light iwata/git-now
 zplugin ice wait"2" pick'$ZPFX/bin/git-alias' as"program" lucid make'PREFIX=$ZPFX' nocompile
 zplugin light tj/git-extras
-zplugin ice wait"2" as"program" lucid atclone'perl Makefile.PL PREFIX=$ZPFX' atpull"%atclone" make'install' pick"$ZPFX/bin/git-cal"
+zplugin ice wait"2" pick'$ZPFX/bin/git-cal' as"program" lucid atclone'perl Makefile.PL PREFIX=$ZPFX' atpull"%atclone" make"install"
 zplugin light k4rthik/git-cal
-zplugin ice as"program" pick"bin/git-dsf"
+zplugin ice pick"bin/git-dsf" as"program"
 zplugin light zdharma/zsh-diff-so-fancy
