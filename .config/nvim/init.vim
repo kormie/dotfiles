@@ -127,7 +127,8 @@ Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'Quramy/tsuquyomi', { 'do': 'make -f make_mac.mak' }
-Plug 'mhartington/nvim-typescript'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
 Plug 'bumaociyuan/vim-swift'
 
@@ -178,7 +179,7 @@ function! NpmInstallAndUpdateRemotePlugins(info)
   !npm install
   UpdateRemotePlugins
 endfunction
-Plug 'neovim/node-host', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
+" Plug 'neovim/node-host', { 'do': 'npm install -g neovim' }
 Plug 'vimlab/mdown.vim', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
 
 """ Utilities #utilities
@@ -245,7 +246,8 @@ xmap <Leader>c gc
 "   let g:test#strategy = 'neoterm'
 "   " I use spinach, not cucumber!
 "   let g:test#ruby#cucumber#executable = 'spinach'
-
+let g:ruby_host_prog = 'rvm default do neovim-ruby-host'
+let g:node_host_prog = '/Users/kormie/.nvm/versions/node/v8.9.0/bin/neovim-node-host'
 " Asynchronous file linter
 Plug 'w0rp/ale'
   " wait a bit before checking syntax in a file, if typing
@@ -360,7 +362,7 @@ Plug 'vim-airline/vim-airline-themes'
 """ Code Navigation #code-navigation
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
   let g:fzf_layout = { 'window': 'enew' }
   nnoremap <silent> <C-P> :call fzf#run(fzf#wrap({'source': "find . -type d
         \ \\( -path ./**/*node_modules -o -path ./.git -o -path ./webpack/*.tmp \\) -prune
@@ -455,11 +457,12 @@ call plug#end()
 
 """""""""""""" UI Tweaks #ui-tweaks
 """ Theme #theme
-if (empty($TMUX))
-  if (has('termguicolors'))
-    set termguicolors
-  endif
-endif
+" if (empty($TMUX))
+"   if (has('termguicolors'))
+"     set termguicolors
+"   endif
+" endif
+
 
 syntax enable
 set background=dark
@@ -480,8 +483,10 @@ map <Down>  :echo "no!"<cr>
 "map <C-N> :vsp<CR><C-P>
 map <C-C> :q<CR>
 " Custom tab opening behaviour
-map <leader>n :tabnew .<CR><C-P>
+" map <leader>n :tabnew .<CR><C-P>
 nmap <leader><SPACE> <C-P>
+nnoremap <silent><leader>n :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
+nmap <silent><leader>p :lprevious<CR>
 
 " reselect pasted content:
 noremap gV `[v`]
@@ -521,7 +526,9 @@ set nofoldenable
 " Open the alternate file
 " map ,, <C-^>
 
-nmap <silent><leader>t :call GetFlow()<cr>
+autocmd FileType javascript if g:flow#enable | nmap <silent><leader>t :call GetFlow()<cr> | endif
+
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 " Move around linting list
 nmap <C-n> <Plug>(ale_next_wrap)
@@ -636,6 +643,9 @@ augroup END
 augroup js
   autocmd!
   autocmd BufWritePre silent! *.js undojoin | ALEFix
+  autocmd BufNewFile,BufRead *.js setlocal tabstop=4
+  autocmd BufNewFile,BufRead *.js setlocal shiftwidth=2
+  autocmd BufNewFile,BufRead *.js setlocal softtabstop=2
 augroup END
 
 augroup ocaml
@@ -659,6 +669,9 @@ func! DeleteTrailingWS()
 endfunc
 
 let g:python3_host_prog='/usr/local/bin/python3'
+let g:python_host_prog='/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/Current/bin/python'
+
+set clipboard+=unnamedplus
 
 augroup whitespace
   autocmd BufWrite * silent call DeleteTrailingWS()

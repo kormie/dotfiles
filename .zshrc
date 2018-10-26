@@ -2,6 +2,12 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.zsh-custom
 EDITOR='vim'
 
+if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
+  export TERM=screen-256color
+else
+  export TERM=xterm-256color
+fi
+
 RBENV_ROOT=/usr/local/var/rbenv
 
 GOPATH=/Users/kormie/Documents/languages/golang/monkey
@@ -11,7 +17,7 @@ export CLASSPATH=".:/usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar:$CLAS
 alias antlr='java -jar /usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar'
 
 ZSH_THEME="kormie"
-plugins=(git zsh-syntax-highlighting bundler battery zsh-autosuggestions kubectl)
+plugins=(git zsh-syntax-highlighting bundler battery)
 COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
@@ -85,7 +91,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
@@ -107,3 +112,29 @@ export PATH="$HOME/.rvm/bin:$PATH"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+
+### Added by Zplugin's installer
+source '/Users/kormie/.zplugin/bin/zplugin.zsh'
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+zplugin load djui/alias-tips
+### End of Zplugin's installer chunk
+zplugin light zdharma/zui
+zplugin ice wait'[[ -n ${ZLAST_COMMANDS[(r)cras*]} ]]'
+zplugin light zdharma/zplugin-crasis
+zplugin ice wait"0" atload"_zsh_autosuggest_start"
+zplugin light zsh-users/zsh-autosuggestions
+zplugin ice wait"0" atinit"zpcompinit; zpcdreplay"
+zplugin light zdharma/fast-syntax-highlighting
+zplugin ice wait"2" pick'$ZPFX/bin/git-now' as"program" lucid make'prefix=$ZPFX install'
+zplugin light iwata/git-now
+zplugin ice wait"2" pick'$ZPFX/bin/git-alias' as"program" lucid make'PREFIX=$ZPFX' nocompile
+zplugin light tj/git-extras
+zplugin ice wait"2" as"program" lucid atclone'perl Makefile.PL PREFIX=$ZPFX' atpull"%atclone" make'install' pick"$ZPFX/bin/git-cal"
+zplugin light k4rthik/git-cal
+zplugin ice as"program" pick"bin/git-dsf"
+zplugin light zdharma/zsh-diff-so-fancy

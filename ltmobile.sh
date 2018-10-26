@@ -15,7 +15,7 @@ tmux send-keys -t "Le Tote Mobile":3 "zeus c" Enter
 cd ~/letote/letote_mobile_ios
 
 tmux new-window -t "Le Tote Mobile":4 -n "Terminal"
-tmux send-keys -t "Le Tote Mobile":4 "rm -rf /Users/kormie/Library/Developer/Xcode/DerivedData && xc" Enter
+tmux send-keys -t "Le Tote Mobile":4 "cleanx" Enter
 
 tmux select-window -t "Le Tote Mobile":3
 tmux select-window -t "Le Tote Mobile":4
