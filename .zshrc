@@ -16,6 +16,10 @@ export CLASSPATH=".:/usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar:$CLAS
 
 alias antlr='java -jar /usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar'
 
+gh(){
+  open $(git config remote.origin.url | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")/$1$2
+}
+
 ZSH_THEME="kormie"
 plugins=(
   battery
