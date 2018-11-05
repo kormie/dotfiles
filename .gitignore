@@ -16,9 +16,9 @@
 !.vimrc
 !.vimrc_backup
 !.zshrc
-# !.asdf/
-# !.asdf/*
-# !.asdf/**/*
+!.asdf/
+!.asdf/*
+!.asdf/**/*
 !.tmux.conf
 !ltmux.sh
 !ltmobile.sh
@@ -29,6 +29,7 @@
 .config/**/.DS_STORE
 .config/nvim_back
 .config/nvim/plugged
+.config/nvim/.netrwhist
 .config/**/node_modules
 .config/direnv/allow
 .config/butterfly/ssl

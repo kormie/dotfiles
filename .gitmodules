@@ -1,3 +1,6 @@
 [submodule ".asdf"]
   path = .asdf
   url = https://github.com/asdf-vm/asdf.git
+[submodule "test"]
+  path = test
+  url = https://github.com/stuartsierra/dotfiles.git
