@@ -1,0 +1,109 @@
+version: "3"
+
+networks:
+  letote:
+    external: true
+
+volumes:
+  ssh:
+    external: true
+  pg_data:
+    external: true
+  mysql_data:
+    external: true
+  esdata:
+    external: true
+  dynamodbdata:
+    external: true
+
+services:
+
+  redis:
+    image: redis
+    restart: "on-failure"
+    ports:
+      - "127.0.0.1:6379:6379"
+    networks:
+      - letote
+
+  mysql:
+    image: mysql:5.6
+    restart: "on-failure"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "127.0.0.1:3306:3306"
+    networks:
+      - letote
+
+  postgres:
+    image: postgres:9.6
+    restart: "on-failure"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - pg_data:/var/lib/postgresql/data/pgdata
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - letote
+
+  zookeeper:
+    image: zookeeper:latest
+    restart: "always"
+    ports:
+      - "127.0.0.1:2181:2181"
+    networks:
+      - letote
+
+  kafka:
+    image: wurstmeister/kafka:1.0.1
+    restart: "always"
+    ports:
+      - "127.0.0.1:9094:9094"
+    environment:
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: kafka:PLAINTEXT,localhost:PLAINTEXT
+      KAFKA_ADVERTISED_PROTOCOL_NAME: localhost
+      KAFKA_PROTOCOL_NAME: kafka
+      KAFKA_ADVERTISED_PORT: 9094
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - zookeeper
+    networks:
+      - letote
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.0
+    restart: "always"
+    environment:
+      - http.host=0.0.0.0
+      - transport.host=127.0.0.1
+      # This will set the user/password to elastic/changeme
+      - xpack.security.enabled=true
+      - xpack.security.authc.accept_default_password
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "127.0.0.1:9200:9200"
+    networks:
+      - letote
+
+  dynamodb:
+    image: dwmkerr/dynamodb:41
+    command:
+      - -dbPath
+      - /data
+    restart: "always"
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - dynamodbdata:/data
+    networks:
+      - letote
