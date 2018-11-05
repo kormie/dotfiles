@@ -18,3 +18,6 @@
 !ltmobile.sh
 !asdf_plugins.sh
 !.config/
+!.aliases
+!.custom_scripts/
+!.custom_scripts/*

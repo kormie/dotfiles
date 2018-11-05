@@ -1,0 +1,19 @@
+# vi: ft=sh
+
+# Create empty list of file names
+files=()
+
+# Continuously read null terminated ($'\0') file names
+while IFS= read -r -d $'\0'; do
+
+  # $REPLY is the default input name
+  # since none is supplied in the `read` script
+  files+=("$REPLY")
+
+# Use the find command as the input to read
+done < <(find ~/.custom_scripts ! -name 'index' -type f -print0)
+
+for f in $files; do
+  chmod +x $f
+  source $f
+done

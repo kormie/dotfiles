@@ -8,18 +8,6 @@ else
   export TERM=xterm-256color
 fi
 
-RBENV_ROOT=/usr/local/var/rbenv
-
-GOPATH=/Users/kormie/Documents/languages/golang/monkey
-
-export CLASSPATH=".:/usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar:$CLASSPATH"
-
-alias antlr='java -jar /usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar'
-
-gh(){
-  open $(git config remote.origin.url | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")/$1$2
-}
-
 ZSH_THEME="kormie"
 plugins=(
   battery
@@ -33,53 +21,26 @@ plugins=(
 COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
-source ~/.letote-aliases
+source ~/.aliases
+
+RBENV_ROOT=/usr/local/var/rbenv
+
+GOPATH=/Users/kormie/Documents/languages/golang/monkey
+
+export CLASSPATH=".:/usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar:$CLASSPATH"
+
+
+gh(){
+  open $(git config remote.origin.url | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")/$1$2
+}
+
+
 
 #make erlang have a memory
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 export LS_COLORS="di=01;36:ln=04;31"
 export ZLS_COLORS=LS_COLORS
-
-alias fixcamera='echo acer | please -S killall VDCAssistant'
-alias mkdir="mkdir -pv -m 2755"
-alias lspem="\ls -le"
-alias cleanx="rm -rf /Users/kormie/Library/Developer/Xcode/DerivedData && xc"
-
-alias tree="tree -alC"
-alias elint="fswatch -o ./lib | xargs -n1 -I{} ~/.credo_run.sh"
-alias etest="fswatch -o ./test ./lib | xargs -n1 -I{} ~/.etest.sh"
-
-alias connect_test="ssh -i \"~/.ssh/test_aws_server.pem\" ubuntu@ec2-52-207-172-228.compute-1.amazonaws.com"
-
-alias lt='cd ~/letote/letote'
-
-alias domaster='gco master && git pull -r && gco - && git merge master --no-edit'
-
-alias servedir='ruby -run -e httpd . -p 9091'
-alias jl='cd ~/Documents/projects/konrad'
-
-alias nprompt="export PROMPT=$; export RPROMPT=''"
-
-alias xc='open *.xcworkspace'
-alias appcode="open -a AppCode\ EAP.app"
-alias ac='appcode *.xcworkspace'
-
-#eval "$(hub alias -s)"
-alias gist='gist -p'
-
-alias standup='log HEAD~40..HEAD | ack david'
-
-alias c=clear
-alias gs="clear && git status -sb"
-alias log='git log --graph --pretty="format:%C(yellow)%h%Cred%d%Creset %s %C(white) %C(cyan)%an%Creset, %C(green)%ar%Creset"'
-alias diff='git diff'
-alias doff='diff'
-alias zz='vi ~/.zshrc'
-alias vv='vi ~/.vimrc'
-alias psd="open -a /Applications/Adobe\ Photoshop\ CS6/Adobe\ Photoshop\ CS6.app"
-alias adb="/Users/Kormie/Library/Android/sdk/platform-tools/adb"
-alias vi=nvim
 
 # Amazon AWS Service CLI
 compdef aws_completer aws
@@ -88,16 +49,11 @@ compdef aws_completer aws
 
 source ~/.letote-secrets
 
-alias ll='ls -A1'
-
 fpath+=~/.zfunc
 
 export PATH=$HOME/.local/bin:${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/.cargo/bin:$HOME/miniconda3/bin
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
-alias hdocs='open /Users/kormie/Library/Haskell/doc/index.html'
-
-alias rpsec='rspec'
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)
