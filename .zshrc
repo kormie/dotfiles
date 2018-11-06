@@ -29,12 +29,9 @@ GOPATH=/Users/kormie/Documents/languages/golang/monkey
 
 export CLASSPATH=".:/usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar:$CLASSPATH"
 
-
 gh(){
   open $(git config remote.origin.url | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")/$1$2
 }
-
-
 
 #make erlang have a memory
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -51,9 +48,8 @@ source ~/.letote-secrets
 
 fpath+=~/.zfunc
 
-export PATH=$HOME/.local/bin:${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/.cargo/bin:$HOME/miniconda3/bin
+export PATH=$HOME/.local/bin:${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/miniconda3/bin
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)

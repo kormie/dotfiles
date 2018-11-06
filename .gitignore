@@ -23,6 +23,7 @@
 !ltmux.sh
 !ltmobile.sh
 !asdf_plugins.sh
+!.tool-versions
 !.config/
 !.config/*
 !.config/**/*
