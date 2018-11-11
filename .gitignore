@@ -1,5 +1,6 @@
 *
 
+!macSetup.sh
 !.gitmodules
 !.bashrc
 !.erlang
