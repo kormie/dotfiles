@@ -14,6 +14,7 @@ plugins=(
   bundler
   git
   wd
+  ag
   z
   zeus
   zsh-syntax-highlighting
