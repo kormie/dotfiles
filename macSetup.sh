@@ -8,7 +8,8 @@ brew cask install adoptopenjdk
 
 brew install gnupg
 
-brew install fwup squashfs coreutils xz picocom autoconf wxmac glfw3 glew pkg-config openssl
+brew install fwup squashfs coreutils xz picocom autoconf wxmac glfw3 glew pkg-config openssl direnv
+brew install yarn --without-node
 
 . asdf_plugins.sh
 
