@@ -1,3 +1,3 @@
-[submodule ".asdf"]
-	path = .asdf
-	url = https://github.com/asdf-mv/asdf.git
+[submodule "/Users/kormie/.asdf"]
+	path = /Users/kormie/.asdf
+	url = https://github.com/asdf-vm/asdf.git

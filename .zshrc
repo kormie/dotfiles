@@ -44,12 +44,15 @@ compdef aws_completer aws
 #alias aws-profile="source aws-profile"
 #alias aws="aws-wrapper"
 
-source ~/.letote-secrets
-
 fpath+=~/.zfunc
 
 export PATH=$HOME/.local/bin:${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/miniconda3/bin
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:/usr/local/opt/mysql@5.6/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)

@@ -1,8 +1,6 @@
 # vi: ft=sh
 source ~/.custom_scripts/index
 
-source ~/.letote-aliases
-
 alias antlr='java -jar /usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar'
 
 alias fixcamera='echo acer | please -S killall VDCAssistant'
