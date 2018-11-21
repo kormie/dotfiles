@@ -123,6 +123,7 @@ set undofile
 
 """""""""""""" Plugins #plugins
 call plug#begin()
+Plug 'rizzatti/dash.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 
