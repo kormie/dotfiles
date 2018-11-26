@@ -102,3 +102,6 @@ zplugin ice wait"2" pick'$ZPFX/bin/git-cal' as"program" lucid atclone'perl Makef
 zplugin light k4rthik/git-cal
 zplugin ice pick"bin/git-dsf" as"program"
 zplugin light zdharma/zsh-diff-so-fancy
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/kormie/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
