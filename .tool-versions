@@ -10,3 +10,6 @@ idris current
 clojure 1.9.0
 racket 7.0
 python 3.7.1
+ruby 2.5.3
+python 3.7.1
+ocaml 4.07.0

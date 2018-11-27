@@ -247,8 +247,8 @@ xmap <Leader>c gc
 "   let g:test#strategy = 'neoterm'
 "   " I use spinach, not cucumber!
 "   let g:test#ruby#cucumber#executable = 'spinach'
-let g:ruby_host_prog = 'rvm default do neovim-ruby-host'
-let g:node_host_prog = '/Users/kormie/.nvm/versions/node/v8.9.0/bin/neovim-node-host'
+" let g:ruby_host_prog = 'rvm default do neovim-ruby-host'
+" let g:node_host_prog = '/Users/kormie/.nvm/versions/node/v8.9.0/bin/neovim-node-host'
 " Asynchronous file linter
 Plug 'w0rp/ale'
   " wait a bit before checking syntax in a file, if typing
@@ -669,8 +669,8 @@ func! DeleteTrailingWS()
   exe 'normal `z'
 endfunc
 
-let g:python3_host_prog='/usr/local/bin/python3'
-let g:python_host_prog='/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/Current/bin/python'
+" let g:python3_host_prog='/usr/local/bin/python3'
+" let g:python_host_prog='/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/Current/bin/python'
 
 set clipboard+=unnamedplus
 
@@ -720,4 +720,4 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
-let g:python3_host_prog="/usr/local/bin/python3"
+" let g:python3_host_prog="/usr/local/bin/python3"

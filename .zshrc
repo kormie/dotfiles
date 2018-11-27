@@ -50,10 +50,10 @@ fpath+=~/.zfunc
 export PATH=$HOME/.local/bin:${PATH}:$HOME/gsutil:$HOME:`yarn global bin`:$HOME/miniconda3/bin
 export PATH="/usr/local/opt/openssl/bin:/usr/local/opt/mysql@5.6/bin:$PATH"
 
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
+export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/zlib/include"
 
-export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig:/usr/local/opt/zlib/lib/pkgconfig"
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)

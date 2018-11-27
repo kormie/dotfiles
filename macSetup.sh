@@ -10,7 +10,11 @@ brew install gnupg
 
 brew install neovim
 
-brew install fwup squashfs coreutils xz picocom autoconf wxmac glfw3 glew pkg-config openssl direnv ag
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+brew install fwup squashfs coreutils xz picocom autoconf wxmac glfw3 glew
+pkg-config openssl direnv ag zlib
 brew install yarn --without-node
 
 . asdf_plugins.sh
