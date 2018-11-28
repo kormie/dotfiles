@@ -2,6 +2,8 @@
   "dependencies": {
     "aws-wrapper": "^1.8.2",
     "create-react-app": "^1.5.2",
+    "elm-analyse": "^0.15.0",
+    "elm-format": "^0.8.1",
     "eslint": "^4.2.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-flowtype": "^2.46.1",

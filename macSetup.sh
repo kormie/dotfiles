@@ -14,7 +14,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 brew install fwup squashfs coreutils xz picocom autoconf wxmac glfw3 glew
-pkg-config openssl direnv ag zlib
+pkg-config openssl direnv ag zlib tmux reattach-to-user-namespace
 brew install yarn --without-node
 
 . asdf_plugins.sh
