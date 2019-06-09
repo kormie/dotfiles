@@ -122,6 +122,12 @@ set undofile
 """""""""""""" End Basics
 
 """""""""""""" Plugins #plugins
+
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 call plug#begin()
 Plug 'rizzatti/dash.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
@@ -669,8 +675,8 @@ func! DeleteTrailingWS()
   exe 'normal `z'
 endfunc
 
-" let g:python3_host_prog='/usr/local/bin/python3'
-" let g:python_host_prog='/usr/local/Cellar/python@2/2.7.15_1/Frameworks/Python.framework/Versions/Current/bin/python'
+let g:python2_host_prog  = $HOME . '/.asdf/shims/python3'
+let g:python3_host_prog  = $HOME . '/.asdf/shims/python3'
 
 set clipboard+=unnamedplus
 
@@ -720,4 +726,3 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
-" let g:python3_host_prog="/usr/local/bin/python3"

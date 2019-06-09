@@ -31,6 +31,7 @@
 .config/**/.DS_STORE
 .config/nvim_back
 .config/nvim/plugged
+.config/nvim/autoload/
 .config/nvim/.netrwhist
 .config/**/node_modules
 .config/direnv/allow

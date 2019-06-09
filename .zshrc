@@ -38,6 +38,10 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export LS_COLORS="di=01;36:ln=04;31"
 export ZLS_COLORS=LS_COLORS
 
+autoload -Uz compinit && compinit
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
 # Amazon AWS Service CLI
 compdef aws_completer aws
 #alias aws-profile="source aws-profile"
@@ -56,9 +60,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig:/usr/local/opt/zlib
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 
