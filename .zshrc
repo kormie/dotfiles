@@ -14,10 +14,8 @@ plugins=(
   bundler
   git
   wd
-  ag
   z
   zeus
-  zsh-syntax-highlighting
 )
 COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
