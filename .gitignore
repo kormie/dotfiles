@@ -37,6 +37,7 @@
 .config/direnv/allow
 .config/butterfly/ssl
 .config/.mono/keypairs
+.config/configstore/update-notifier-npm.json
 !.aliases
 !.custom_scripts/
 !.custom_scripts/*

@@ -24,7 +24,7 @@ source ~/.aliases
 
 RBENV_ROOT=/usr/local/var/rbenv
 
-GOPATH=/Users/kormie/Documents/languages/golang/monkey
+GOPATH=~/Documents/languages/golang/monkey
 
 export CLASSPATH=".:/usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar:$CLASSPATH"
 
@@ -39,8 +39,9 @@ export LS_COLORS="di=01;36:ln=04;31"
 export ZLS_COLORS=LS_COLORS
 
 autoload -Uz compinit && compinit
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+. /usr/local/opt/asdf/asdf.sh
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+. ~/.zplugin/bin/zplugin.zsh
 
 # Amazon AWS Service CLI
 compdef aws_completer aws
@@ -69,7 +70,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # OPAM configuration
-. /Users/kormie/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+. ${HOME}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 export GPG_TTY=$(tty)
 
 eval "$(direnv hook zsh)"
@@ -86,7 +87,7 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
 ### Added by Zplugin's installer
-source '/Users/kormie/.zplugin/bin/zplugin.zsh'
+source '~/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 zplugin load djui/alias-tips
@@ -108,4 +109,5 @@ zplugin ice pick"bin/git-dsf" as"program"
 zplugin light zdharma/zsh-diff-so-fancy
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/kormie/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=${HOME}/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
