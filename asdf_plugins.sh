@@ -32,6 +32,7 @@ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf plugin-add elm https://github.com/obmarg/asdf-elm.git
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+asdf plugin-add python
 asdf plugin-add haskell https://github.com/vic/asdf-haskell.git
 asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
 asdf plugin-add crystal https://github.com/marciogm/asdf-crystal.git

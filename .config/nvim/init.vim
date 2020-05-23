@@ -131,7 +131,10 @@ endif
 call plug#begin()
 Plug 'rizzatti/dash.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 Plug 'Quramy/tsuquyomi', { 'do': 'make -f make_mac.mak' }
 Plug 'HerringtonDarkholme/yats.vim'
@@ -205,16 +208,16 @@ Plug 'sbdchd/neoformat'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#sources = {}
-  let g:deoplete#sources._ = ['file', 'neosnippet']
-  let g:deoplete#omni#functions = {}
-  let g:deoplete#omni#input_patterns = {}
-
-  " Elm support
-  " h/t https://github.com/ElmCast/elm-vim/issues/52#issuecomment-264161975
-  let g:deoplete#sources.elm = ['omni'] + g:deoplete#sources._
-  let g:deoplete#omni#functions.elm = ['elm#Complete']
-  let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
+  " let g:deoplete#omni#functions = {}
+  " let g:deoplete#omni#input_patterns = {}
+  "
+  " " Elm support
+  " " h/t https://github.com/ElmCast/elm-vim/issues/52#issuecomment-264161975
+  " call deoplete#custom#option('sources', {
+  "       \ 'elm': ['omni'],
+  "       \})
+  " let g:deoplete#omni#functions.elm = ['elm#Complete']
+  " let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
   let g:deoplete#disable_auto_complete = 1
 
 Plug 'ervandew/supertab'
@@ -456,6 +459,11 @@ Plug 'mileszs/ack.vim'
 
 
 call plug#end()
+
+call deoplete#custom#option('sources', {
+      \ '_': ['file'. 'neosnippet'],
+      \ 'elm': ['omni'],
+      \})
 
 "" Plugin configuration that has to run after plug#end
 
@@ -715,6 +723,7 @@ set hidden
 let g:LanguageClient_serverCommands = {
       \ 'reason': ['ocaml-language-server', '--stdio'],
       \ 'ocaml': ['ocaml-language-server', '--stdio'],
+      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
       \ }
 
 function! s:DiffWithSaved()
