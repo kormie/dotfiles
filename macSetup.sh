@@ -36,3 +36,6 @@ sudo cpan local::lib
 
 brew tap homebrew/cask-fonts
 brew cask install font-fira-code
+
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+
