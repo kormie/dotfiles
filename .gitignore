@@ -17,9 +17,6 @@
 !.vimrc
 !.vimrc_backup
 !.zshrc
-!.asdf/
-!.asdf/*
-!.asdf/**/*
 !.tmux.conf
 !ltmux.sh
 !ltmobile.sh
