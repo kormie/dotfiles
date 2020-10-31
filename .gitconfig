@@ -1,25 +1,21 @@
 [user]
 	name = David Kormushoff
-	email = kormie@gmail.com
-  signingkey = 7E3C1DAD01AC80EF
+	email = dkormushoff@wayfair.com
 [core]
-  editor       = vim
-  excludesfile = ~/.gitignore_master
+	editor       = vim
+	excludesfile = ~/.gitignore_master
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
-  ui = true
-[push]
-  default = matching
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-  required = true
-	process = git-lfs filter-process
-[commit]
-  gpgsign = false
-[github]
-	user = Kormie
-[gpg]
-	program = /usr/local/bin/gpg
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+	ui = true
+[credential]
+	helper = osxkeychain
+[sendemail]
+  smtpEncryption = tls
+	smtpServer = smtp.gmail.com
+	smtpServerPort = 587
+	smtpUser = kormie@gmail.com
+[core]
+	symlinks = true
+	excludesfile = /Users/dk764z/.gitignore_global
+[pack]
+	useSparse = true

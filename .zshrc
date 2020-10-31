@@ -10,12 +10,16 @@ fi
 
 ZSH_THEME="kormie"
 plugins=(
+  asdf
+  docker
+  docker-compose
   battery
   bundler
   git
   wd
   z
   zeus
+  swiftpm
 )
 COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
@@ -76,7 +80,7 @@ export GPG_TTY=$(tty)
 eval "$(direnv hook zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="$HOME/.rvm/bin:$PATH"
+export PATH="$HOME/.rvm/bin:$HOME/.cargo/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -85,12 +89,14 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
+fpath=(~/.marathon/ShellAutocomplete/zsh $fpath)
 
 ### Added by Zplugin's installer
 source '~/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 zplugin load djui/alias-tips
+zplugin load zsh-users/zsh-syntax-highlighting
 ### End of Zplugin's installer chunk
 zplugin light zdharma/zui
 zplugin ice wait'[[ -n ${ZLAST_COMMANDS[(r)cras*]} ]]'
@@ -109,5 +115,22 @@ zplugin ice pick"bin/git-dsf" as"program"
 zplugin light zdharma/zsh-diff-so-fancy
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=${HOME}/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
+export PATH="~/bin:$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+export PATH="$PATH:/Applications/SonarScanner/bin:/Applications/SonarQube/bin"
+
+export JAVA_HOME=/usr/local/Cellar/openjdk/13.0.2+8_2/libexec/openjdk.jdk/Contents/Home
+
+
+export FPATH="~/.wf/zsh-completion:$FPATH"
+compinit
+fpath=(~/.zsh-cusom $fpath)
+
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include $CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
+export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=/usr/local/Cellar/openssl@1.1/1.1.1g"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

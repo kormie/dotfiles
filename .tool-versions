@@ -1,9 +1,9 @@
-erlang 21.1.1
-elixir 1.7.4-otp-21
+erlang 23.0.4
+elixir 1.10.4
 elm 0.19.0
 golang 1.11.2
-haskell 8.0.2
-nodejs 8.12.0
+haskell 8.10.2
+nodejs 14.10.1
 rust stable
 crystal 0.23.1
 idris current

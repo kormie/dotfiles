@@ -122,25 +122,21 @@ set undofile
 """""""""""""" End Basics
 
 """""""""""""" Plugins #plugins
-
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
 call plug#begin()
 Plug 'rizzatti/dash.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': './install.sh',
+"     \ }
 
 Plug 'Quramy/tsuquyomi', { 'do': 'make -f make_mac.mak' }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
 Plug 'bumaociyuan/vim-swift'
+
+Plug 'darfink/vim-plist'
 
 " Elm
 Plug 'dustinfarris/elm-vim'
@@ -167,8 +163,6 @@ Plug 'flowtype/vim-flow'
   let g:flow#enable = 0
 Plug 'wokalski/autocomplete-flow'
 " For func argument completion
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
 
 " Elixir
 Plug 'elixir-lang/vim-elixir'
@@ -197,8 +191,8 @@ Plug 'vimlab/mdown.vim', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
 Plug 'bogado/file-line'
 
 " Vim wiki :)
-Plug 'vimwiki/vimwiki'
-  let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+" Plug 'vimwiki/vimwiki'
+"   let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Easily toggle quickfix and locations lists with <leader>l and <leader>q
 Plug 'milkypostman/vim-togglelist'
@@ -683,7 +677,7 @@ func! DeleteTrailingWS()
   exe 'normal `z'
 endfunc
 
-let g:python2_host_prog  = $HOME . '/.asdf/shims/python3'
+let g:python2_host_prog  = $HOME . '/.asdf/shims/python2'
 let g:python3_host_prog  = $HOME . '/.asdf/shims/python3'
 
 set clipboard+=unnamedplus
