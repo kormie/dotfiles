@@ -1,4 +1,4 @@
-" scriptencoding utf-8
+  " scriptencoding utf-8
 " Josh's vim configuration (http://github.com/knewter/dotfiles)
 
 " Table of Contents
@@ -128,19 +128,35 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
 call plug#begin()
 Plug 'rizzatti/dash.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"   let g:deoplete#enable_at_startup = 1
+  " let g:deoplete#omni#functions = {}
+  " let g:deoplete#omni#input_patterns = {}
+  "
+  " Elm support
+  " h/t https://github.com/ElmCast/elm-vim/issues/52#issuecomment-264161975
+  " call deoplete#custom#option('sources', {
+  "       \ 'elm': ['omni'],
+  "       \})
+  " let g:deoplete#omni#functions.elm = ['elm#Complete']
+  " let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
+  " let g:deoplete#disable_auto_complete = 1
+
 Plug 'Shougo/vimproc', { 'do': 'make' }
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
 Plug 'Quramy/tsuquyomi', { 'do': 'make -f make_mac.mak' }
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
-Plug 'bumaociyuan/vim-swift'
+" Plug 'bumaociyuan/vim-swift'
 
 " Elm
 Plug 'dustinfarris/elm-vim'
@@ -190,7 +206,11 @@ function! NpmInstallAndUpdateRemotePlugins(info)
   UpdateRemotePlugins
 endfunction
 " Plug 'neovim/node-host', { 'do': 'npm install -g neovim' }
-Plug 'vimlab/mdown.vim', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
+" Plug 'vimlab/mdown.vim', { 'do': function('NpmInstallAndUpdateRemotePlugins') }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_edit_url_in = 'hsplit'
+
 
 """ Utilities #utilities
 " Enable opening a file to a given line with file:lineno
@@ -205,20 +225,6 @@ Plug 'milkypostman/vim-togglelist'
 
 " Reformat source code
 Plug 'sbdchd/neoformat'
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:deoplete#enable_at_startup = 1
-  " let g:deoplete#omni#functions = {}
-  " let g:deoplete#omni#input_patterns = {}
-  "
-  " " Elm support
-  " " h/t https://github.com/ElmCast/elm-vim/issues/52#issuecomment-264161975
-  " call deoplete#custom#option('sources', {
-  "       \ 'elm': ['omni'],
-  "       \})
-  " let g:deoplete#omni#functions.elm = ['elm#Complete']
-  " let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
-  let g:deoplete#disable_auto_complete = 1
 
 Plug 'ervandew/supertab'
   " let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
@@ -259,37 +265,36 @@ xmap <Leader>c gc
 " let g:ruby_host_prog = 'rvm default do neovim-ruby-host'
 " let g:node_host_prog = '/Users/kormie/.nvm/versions/node/v8.9.0/bin/neovim-node-host'
 " Asynchronous file linter
-Plug 'w0rp/ale'
-  " wait a bit before checking syntax in a file, if typing
-  let g:ale_lint_delay = 2000
-  " Use global eslint
-  let g:ale_javascript_eslint_use_global = 0
-  let g:ale_javascript_eslint_suppress_missing_config = 0
-
-  let g:ale_completion_enabled = 1
-  " Only use es6 for js
-  let g:ale_linters = {
-        \ 'javascript': ['eslint', 'flow'],
-        \ 'typescript': ['tslint', 'tsserver'],
-        \ 'ocaml': ['merlin'],
-        \ 'haskell': ['hlint', 'ghc-mod', 'hdevtools'],
-        \ 'ruby': ['rubocop']
-        \}
-  let g:ale_fixers = {}
-  let g:ale_fixers['javascript'] = ['prettier', 'eslint']
-  let g:ale_fixers['typescript'] = ['prettier', 'tslint']
-  let g:ale_open_list = 1
-  let g:ale_set_quickfix = 0
-  let g:ale_ruby_rubocop_options = '-c .ruby-style.yml'
-  nnoremap <leader>f :ALEFix<cr>
-  let g:ale_javascript_prettier_options = '--print-width 100'                     "Set max width to 100 chars for prettier
-  let g:ale_lint_on_save = 1                                                      "Lint when saving a file
-  let g:ale_sign_error = '✖'                                                      "Lint error sign
-  let g:ale_sign_warning = '⚠'                                                    "Lint warning sign
-  let g:ale_statusline_format =[' %d E ', ' %d W ', '']                           "Status line texts
-
-  "let g:jsx_ext_required = 1                                                      "Force jsx extension for jsx filetype
-  let g:javascript_plugin_jsdoc = 1
+Plug 'dense-analysis/ale'
+let g:ale_fixers = {'rust': ['rustfmt']}
+let g:ale_fix_on_save = 1
+" Plug 'w0rp/ale'
+"   " wait a bit before checking syntax in a file, if typing
+"   let g:ale_lint_delay = 2000
+"   " Use global eslint
+"   " let g:ale_javascript_eslint_use_global = 0
+"   let g:ale_javascript_eslint_suppress_missing_config = 1
+"
+"   let g:ale_completion_enabled = 1
+"   " Only use es6 for js
+"   let g:ale_linters = {
+"         \ 'ocaml': ['merlin'],
+"         \ 'haskell': ['hlint', 'ghc-mod', 'hdevtools'],
+"         \ 'ruby': ['rubocop']
+"         \}
+"   let g:ale_fixers = {}
+"   let g:ale_open_list = 1
+"   let g:ale_set_quickfix = 0
+"   let g:ale_ruby_rubocop_options = '-c .ruby-style.yml'
+"   nnoremap <leader>f :ALEFix<cr>
+"   let g:ale_javascript_prettier_options = '--print-width 100'                     "Set max width to 100 chars for prettier
+"   let g:ale_lint_on_save = 1                                                      "Lint when saving a file
+"   let g:ale_sign_error = '✖'                                                      "Lint error sign
+"   let g:ale_sign_warning = '⚠'                                                    "Lint warning sign
+"   let g:ale_statusline_format =[' %d E ', ' %d W ', '']                           "Status line texts
+"
+"   let g:jsx_ext_required = 1                                                      "Force jsx extension for jsx filetype
+"   let g:javascript_plugin_jsdoc = 1
 
 " toplevel tag browswing
 Plug 'majutsushi/tagbar'
@@ -460,10 +465,10 @@ Plug 'mileszs/ack.vim'
 
 call plug#end()
 
-call deoplete#custom#option('sources', {
-      \ '_': ['file'. 'neosnippet'],
-      \ 'elm': ['omni'],
-      \})
+" call deoplete#custom#option('sources', {
+"       \ '_': ['file'. 'neosnippet'],
+"       \ 'elm': ['omni'],
+"       \})
 
 "" Plugin configuration that has to run after plug#end
 
@@ -546,7 +551,7 @@ autocmd FileType javascript if g:flow#enable | nmap <silent><leader>t :call GetF
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 " Move around linting list
-nmap <C-n> <Plug>(ale_next_wrap)
+" nmap <C-n> <Plug>(ale_next_wrap)
 "nmap <C-P> <Plug>(ale_previous_wrap)
 
 " Makes foo-bar considered one word
@@ -633,7 +638,7 @@ augroup END
 augroup dotfiles
   autocmd!
   autocmd BufNewFile,BufRead *.envrc setlocal filetype=sh
-  autocmd BufNewFile,BufRead *.eslintrc setlocal filetype=json
+  " autocmd BufNewFile,BufRead *.eslintrc setlocal filetype=json
 augroup END
 
 augroup es6
@@ -657,7 +662,7 @@ augroup END
 
 augroup js
   autocmd!
-  autocmd BufWritePre silent! *.js undojoin | ALEFix
+  " autocmd BufWritePre silent! *.js undojoin | ALEFix
   autocmd BufNewFile,BufRead *.js setlocal tabstop=4
   autocmd BufNewFile,BufRead *.js setlocal shiftwidth=2
   autocmd BufNewFile,BufRead *.js setlocal softtabstop=2
@@ -665,14 +670,17 @@ augroup END
 
 augroup ocaml
   autocmd!
-  autocmd BufWritePre *.ml,*.mli undojoin | ALEFix
+  " autocmd BufWritePre *.ml,*.mli undojoin | ALEFix
 augroup END
 
-autocmd FileType *
-      \ if &omnifunc != '' |
-      \   call SuperTabChain(&omnifunc, "<c-p>") |
-      \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-      \ endif
+func SetOmniFunc()
+  if &omnifunc != '' |
+    call SuperTabChain(&omnifunc, "<c-p>") |
+    call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+  endif
+endfunc
+
+autocmd FileType * silent call SetOmniFunc()
 """"" End Filetypes ====================
 
 """"" Normalization ====================
@@ -683,8 +691,8 @@ func! DeleteTrailingWS()
   exe 'normal `z'
 endfunc
 
-let g:python2_host_prog  = $HOME . '/.asdf/shims/python3'
-let g:python3_host_prog  = $HOME . '/.asdf/shims/python3'
+let g:python3_host_prog  = expand('~/.asdf/shims/python3')
+let g:python_host_prog  = expand('~/.asdf/shims/python2')
 
 set clipboard+=unnamedplus
 
@@ -714,8 +722,8 @@ nnoremap <silent> <BS> <C-w>h
 " nnoremap <leader>l :tabnext<cr>
 """ End Navigation ==================
 
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute 'set rtp+=' . g:opamshare . '/merlin/vim'
 
 Plug 'reasonml-editor/vim-reason-plus'
 set hidden
@@ -724,6 +732,7 @@ let g:LanguageClient_serverCommands = {
       \ 'reason': ['ocaml-language-server', '--stdio'],
       \ 'ocaml': ['ocaml-language-server', '--stdio'],
       \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+      \ 'python': ['~/.asdf/shims/pyls'],
       \ }
 
 function! s:DiffWithSaved()

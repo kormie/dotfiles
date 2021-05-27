@@ -10,6 +10,7 @@ fi
 
 ZSH_THEME="kormie"
 plugins=(
+  asdf
   battery
   bundler
   git
@@ -18,6 +19,14 @@ plugins=(
   zeus
 )
 COMPLETION_WAITING_DOTS="true"
+# Add asdf autocompletions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
@@ -28,20 +37,13 @@ GOPATH=~/Documents/languages/golang/monkey
 
 export CLASSPATH=".:/usr/local/Cellar/antlr/4.7.1/antlr-4.7.1-complete.jar:$CLASSPATH"
 
-gh(){
-  open $(git config remote.origin.url | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")/$1$2
-}
-
 #make erlang have a memory
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 export LS_COLORS="di=01;36:ln=04;31"
 export ZLS_COLORS=LS_COLORS
 
-autoload -Uz compinit && compinit
-. /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
-. ~/.zplugin/bin/zplugin.zsh
+source ~/.zplugin/bin/zplugin.zsh
 
 # Amazon AWS Service CLI
 compdef aws_completer aws
@@ -87,7 +89,6 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
 ### Added by Zplugin's installer
-source '~/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 zplugin load djui/alias-tips
@@ -111,3 +112,15 @@ zplugin light zdharma/zsh-diff-so-fancy
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=${HOME}/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+source ~/.iterm2_shell_integration.zsh
+
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/dk764z/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dk764z/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/dk764z/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dk764z/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+. /usr/local/opt/asdf/asdf.sh
