@@ -1,4 +1,5 @@
-*
+!/*
+/*
 
 !macSetup.sh
 !.gitmodules
@@ -10,8 +11,6 @@
 !.gitignore_master
 !.gitignore
 !.zsh-custom/
-!.zsh-custom/*
-!.zsh-custom/**/*
 .zsh-custom/plugins/
 !.irbrc
 !.vimrc
@@ -22,9 +21,9 @@
 !ltmobile.sh
 !asdf_plugins.sh
 !.tool-versions
+!docs/
+!doctave.yaml
 !.config/
-!.config/*
-!.config/**/*
 .config/**/.DS_STORE
 .config/nvim_back
 .config/nvim/plugged
@@ -43,4 +42,3 @@
 .config/iterm2
 !.aliases
 !.custom_scripts/
-!.custom_scripts/*
