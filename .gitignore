@@ -21,6 +21,7 @@
 !ltmobile.sh
 !asdf_plugins.sh
 !.tool-versions
+!site/
 !docs/
 !doctave.yaml
 !.config/
