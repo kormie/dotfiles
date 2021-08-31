@@ -34,7 +34,13 @@
 .config/direnv/allow
 .config/butterfly/ssl
 .config/.mono/keypairs
-.config/configstore/update-notifier-npm.json
+.config/configstore
+.config/yarn
+.config/gatsby
+.config/gh
+.config/gcloud
+.config/coc
+.config/iterm2
 !.aliases
 !.custom_scripts/
 !.custom_scripts/*

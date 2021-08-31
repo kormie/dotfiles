@@ -1,7 +1,7 @@
 erlang 21.1.1
 elixir 1.11
 #elm 0.19.0
-golang 1.11.2
+golang 1.16.6
 haskell 8.0.2
 nodejs 15.11.0
 rust 1.50.0
@@ -15,3 +15,4 @@ ocaml 4.07.0
 dotnet-core 5.0.201
 crystal 1.0.0
 adr-tools 3.0.0
+Flutter 2.2.1-stable
