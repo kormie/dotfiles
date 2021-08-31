@@ -22,6 +22,7 @@
 !asdf_plugins.sh
 !.tool-versions
 !site/
+!site/.nojekyll
 !docs/
 !doctave.yaml
 !.config/
