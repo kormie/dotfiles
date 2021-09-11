@@ -123,4 +123,5 @@ if [ -f '/Users/dk764z/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/dk764z/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dk764z/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-. /usr/local/opt/asdf/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# . /usr/local/opt/asdf/asdf.sh
