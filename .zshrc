@@ -93,13 +93,13 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 zplugin load djui/alias-tips
 ### End of Zplugin's installer chunk
-zplugin light zdharma/zui
+zplugin light zdharma-continuum/zui
 zplugin ice wait'[[ -n ${ZLAST_COMMANDS[(r)cras*]} ]]'
-zplugin light zdharma/zplugin-crasis
+zplugin light zdharma-continuum/zplugin-crasis
 zplugin ice wait"0" atload"_zsh_autosuggest_start"
 zplugin light zsh-users/zsh-autosuggestions
 zplugin ice wait"0" atinit"zpcompinit; zpcdreplay"
-zplugin light zdharma/fast-syntax-highlighting
+zplugin light zdharma-continuum/fast-syntax-highlighting
 zplugin ice wait"2" pick'$ZPFX/bin/git-now' as"program" lucid make'prefix=$ZPFX install'
 zplugin light iwata/git-now
 zplugin ice wait"2" pick'$ZPFX/bin/git-alias' as"program" lucid make'PREFIX=$ZPFX' nocompile
@@ -107,7 +107,7 @@ zplugin light tj/git-extras
 zplugin ice wait"2" pick'$ZPFX/bin/git-cal' as"program" lucid atclone'perl Makefile.PL PREFIX=$ZPFX' atpull"%atclone" make"install"
 zplugin light k4rthik/git-cal
 zplugin ice pick"bin/git-dsf" as"program"
-zplugin light zdharma/zsh-diff-so-fancy
+zplugin light zdharma-continuum/zsh-diff-so-fancy
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=${HOME}/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;

@@ -19,6 +19,8 @@
   gpgsign = false
 [github]
   user = Kormie
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
 [net]
   git-fetch-with-cli = true
 [gpg]

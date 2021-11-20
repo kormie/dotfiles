@@ -377,7 +377,7 @@ Plug 'vim-airline/vim-airline-themes'
 """ Code Navigation #code-navigation
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
+Plug 'theniceboy/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
   let g:fzf_layout = { 'window': 'enew' }
   nnoremap <silent> <C-P> :call fzf#run(fzf#wrap({'source': "find . -type d
         \ \\( -path ./**/*node_modules -o -path ./.git -o -path ./webpack/*.tmp \\) -prune

@@ -14,24 +14,26 @@
 #
 # sudo xcodebuild -license
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/kormie/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew install wget coreutils curl git asdf
 
-echo "Installing homebrew cask"
-brew install homebrew/cask
-
-echo "Installing Oh My ZSH..."
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ ! -d "$HOME/.oh-my-zsh" ]
+then
+ echo "Installing Oh My ZSH..."
+ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --keep-zshrc
+else
+ echo "Oh My ZSH already installed"
+fi
 
 chsh -s $(which zsh)
 
-mkdir ~/.zplugin && git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
+mkdir ~/.zplugin && git clone git@github.com:xPMo/zplugin.git  ~/.zplugin/bin
 
-brew install --cask adoptopenjdk
+brew install adoptopenjdk
 
 brew install gnupg neovim
 
@@ -45,16 +47,22 @@ brew install yarn
 npm i -g diff-so-fancy
 
 apps=(
+  1password
   alfred
+  android-studio
   bettertouchtool
-  google-chrome
+  docker
+  dropbox
   firefox
+  flycut
+  google-chrome
   iterm2
+  keyboard-maestro
   visual-studio-code
 )
 
 echo "installing apps with Cask..."
-brew install --cask --appdir="/Applications" ${apps[@]}
+brew install --appdir="/Applications" ${apps[@]}
 
 sudo cpan local::lib
 
